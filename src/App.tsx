@@ -2,6 +2,8 @@ import React from 'react';
 
 import styles from './App.module.css';
 import {Header} from "./components/Header/Header";
+import {Panel} from "./components/Panel/Panel";
+import {Todo} from "../../react-ts-todo/src/App";
 
 const DEFAULE_TODO_LIST = [
   {id: 1, name: 'task1', description: 'description1', checked: false},
@@ -14,11 +16,16 @@ const DEFAULE_TODO_LIST = [
 
 export const App = () => {
   const [todos, setTodos] = React.useState(DEFAULE_TODO_LIST);
-  const todoCounter: number = DEFAULE_TODO_LIST.length;
+
+  const addTodo = ({name, description}: Omit<Todo, 'id' | 'checked'>) => {
+    setTodos([...todos, {id: todos[todos.length-1].id + 1, description, name, checked: false }]);
+  };
+
   return (
     <div className={styles.app_container}>
       <div className={styles.container}>
-        <Header todoCounter={todoCounter}/>
+        <Header todoCounter={todos.length}/>
+        <Panel addTodo={addTodo}/>
       </div>
     </div>
   );
