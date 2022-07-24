@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './App.module.css';
+import {Header} from "./components/Header/Header";
 
 const DEFAULE_TODO_LIST = [
   {id: 1, name: 'task1', description: 'description1', checked: false},
@@ -12,11 +13,13 @@ const DEFAULE_TODO_LIST = [
 ]
 
 export const App = () => {
-  console.log('@todos', DEFAULE_TODO_LIST);
-
+  const [todos, setTodos] = React.useState(DEFAULE_TODO_LIST);
+  const todoCounter: number = DEFAULE_TODO_LIST.length;
   return (
     <div className={styles.app_container}>
-      <div className={styles.container}>todo</div>
+      <div className={styles.container}>
+        <Header todoCounter={todoCounter}/>
+      </div>
     </div>
   );
 }
