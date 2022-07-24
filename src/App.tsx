@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import styles from './App.module.css';
+
+const DEFAULE_TODO_LIST = [
+  {id: 1, name: 'task1', description: 'description1', checked: false},
+  {id: 2, name: 'task2', description: 'description2', checked: false},
+  {
+    id: 3, name: 'task3', description: 'description3 description3 description3 description3 description3 ' +
+      'description3 description3 description3 description3 ', checked: true
+  }
+]
+
+export const App = () => {
+  console.log('@todos', DEFAULE_TODO_LIST);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.app_container}>
+      <div className={styles.container}>todo</div>
     </div>
   );
 }
