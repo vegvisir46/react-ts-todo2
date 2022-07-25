@@ -4,6 +4,7 @@ import styles from './App.module.css';
 import {Header} from "./components/Header/Header";
 import {Panel} from "./components/Panel/Panel";
 import {Todo} from "../../react-ts-todo/src/App";
+import {TodoList} from "./components/TodoList/TodoList";
 
 const DEFAULE_TODO_LIST = [
   {id: 1, name: 'task1', description: 'description1', checked: false},
@@ -26,6 +27,7 @@ export const App = () => {
       <div className={styles.container}>
         <Header todoCounter={todos.length}/>
         <Panel addTodo={addTodo}/>
+        <TodoList todos={todos}/>
       </div>
     </div>
   );
