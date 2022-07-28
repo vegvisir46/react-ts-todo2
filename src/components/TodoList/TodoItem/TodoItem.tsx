@@ -7,6 +7,7 @@ interface TodoItemProps {
   todo: Todo;
 }
 
+
 export const TodoItem: React.FC<TodoItemProps> = ({todo}) => {
   return (
     <div className={styles.todo_item_container}>
