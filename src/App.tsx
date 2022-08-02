@@ -19,15 +19,28 @@ export const App = () => {
   const [todos, setTodos] = React.useState(DEFAULE_TODO_LIST);
 
   const addTodo = ({name, description}: Omit<Todo, 'id' | 'checked'>) => {
-    setTodos([...todos, {id: todos[todos.length-1].id + 1, description, name, checked: false }]);
+    setTodos([...todos, {id: todos[todos.length - 1].id + 1, description, name, checked: false}]);
   };
+
+  const checkTodo = (id: Todo['id']) => {
+    setTodos(todos.map(todo => {
+      if (todo.id === id) {
+        return {...todo, checked: !todo.checked}
+      }
+      return todo;
+    }))
+  };
+
+  const deleteTodo = (id: Todo['id']) => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
 
   return (
     <div className={styles.app_container}>
       <div className={styles.container}>
         <Header todoCounter={todos.length}/>
         <Panel addTodo={addTodo}/>
-        <TodoList todos={todos}/>
+        <TodoList todos={todos} checkTodo={checkTodo} deleteTodo={deleteTodo}/>
       </div>
     </div>
   );
